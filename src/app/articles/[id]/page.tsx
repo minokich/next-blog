@@ -1,25 +1,20 @@
 
 import { getArticle } from "@/lib/microcms";
-import { Typography } from "@mui/material";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Image from "next/image";
-import Link from '@mui/material/Link';
 
 import Article from "@/components/Article/Article";
 import PageLayout from "@/components/PageLayout/PageLayout";
+import CustomBreadcrumbs from "@/components/CustomBreadcrumbs/CustomBreadcrumbs";
 
-export default async function ArticlePage({ params }: { params: { id: string } }) {
+const ArticlePage = async ({ params }: { params: { id: string } }) => {
 
     const { id } = await params;
     const article = await getArticle(id);
+    const links = [{ href: "/", label: "TOP" }, { href: "articles", label: "記事一覧" }];
 
     return (
         <>
-            <Breadcrumbs aria-label="breadcrumb">
-                <Link href={"/"}>Top</Link>
-                <Link href={"/articles"}>記事一覧</Link>
-                <Typography sx={{ color: 'text.primary' }}>{article.title}</Typography>
-            </Breadcrumbs>
+            <CustomBreadcrumbs links={links} curreentLabel={article.title} />
             <PageLayout>
                 <h1>{article.title}</h1>
                 {article.eyecatch && (
@@ -35,3 +30,5 @@ export default async function ArticlePage({ params }: { params: { id: string } }
         </>
     );
 }
+
+export default ArticlePage;
