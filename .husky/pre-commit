@@ -1,0 +1,18 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# 開始ログ
+echo "$(date +'%H:%M:%S') pre-commit hook started."
+
+# lint-staged 実行
+npx lint-staged
+status=$?
+
+if [ $status -ne 0 ]; then
+  echo "$(date +'%H:%M:%S') pre-commit hook failed. View hook log"
+  exit 1
+fi
+
+# 終了ログ
+echo "$(date +'%H:%M:%S') pre-commit hook finished successfully."
+exit 0
