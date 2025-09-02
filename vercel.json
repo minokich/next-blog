@@ -1,8 +1,0 @@
-{
-    "routes": [
-        {
-            "src": "/storybook/(.*)",
-            "dest": "/storybook-static/$1"
-        }
-    ]
-}

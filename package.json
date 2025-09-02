@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o storybook-static && mkdir -p public/storybook && cp -r storybook-static/* public/storybook/",
     "prepare": "husky"
   },
   "dependencies": {
