@@ -7,7 +7,7 @@ type PageLayoutProps = {
     children: ReactNode;
 };
 
-export default function PageLayout({ children }: PageLayoutProps) {
+const PageLayout = ({ children }: PageLayoutProps) => {
     const PageLayout = styled.div`
         max-width: 800px;
         margin: 0 auto;
@@ -21,3 +21,5 @@ export default function PageLayout({ children }: PageLayoutProps) {
         </PageLayout>
     );
 }
+
+export default PageLayout;

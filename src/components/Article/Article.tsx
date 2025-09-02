@@ -2,7 +2,11 @@
 
 import styled from "styled-components";
 
-export default function Article({ content }: { content: string }) {
+type ArticleProps = {
+    content: string
+}
+
+const Article = ({ content }: ArticleProps) => {
     const ArticleWrapper = styled.div`
         width: 100%;
 
@@ -27,3 +31,5 @@ export default function Article({ content }: { content: string }) {
         <ArticleWrapper dangerouslySetInnerHTML={{ __html: content }} />
     );
 }
+
+export default Article;
