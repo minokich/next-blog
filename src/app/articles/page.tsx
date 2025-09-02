@@ -32,7 +32,6 @@ export default async function HomePage() {
         <main>
             <h1>ブログ一覧</h1>
             <ul>
-
                 {articles.map((a: article) => (
                     <li key={a.id}>
                         <Link href={`/articles/${a.id}`}>{a.title}</Link>
