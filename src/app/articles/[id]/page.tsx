@@ -5,6 +5,7 @@ import Image from "next/image";
 import Article from "@/components/Article/Article";
 import PageLayout from "@/components/PageLayout/PageLayout";
 import CustomBreadcrumbs from "@/components/CustomBreadcrumbs/CustomBreadcrumbs";
+import ArticleTitle from "@/components/ArticleTitle/ArticleTitle";
 
 const ArticlePage = async ({ params }: { params: { id: string } }) => {
 
@@ -16,7 +17,7 @@ const ArticlePage = async ({ params }: { params: { id: string } }) => {
         <>
             <CustomBreadcrumbs links={links} curreentLabel={article.title} />
             <PageLayout>
-                <h1>{article.title}</h1>
+                <ArticleTitle>{article.title}</ArticleTitle>
                 {article.eyecatch && (
                     <Image
                         src={article.eyecatch.url}

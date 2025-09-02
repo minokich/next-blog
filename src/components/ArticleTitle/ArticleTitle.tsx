@@ -3,12 +3,12 @@
 import { Typography } from "@mui/material";
 
 type ArticleTitleProps = {
-    titleText: string
+    children: string;
 }
 
-const ArticleTitle = ({ titleText }: ArticleTitleProps) => {
+const ArticleTitle = ({ children }: ArticleTitleProps) => {
     return (
-        <Typography variant="h2" component="h2">{titleText}</Typography>
+        <Typography variant="h4" component="h1">{children}</Typography>
     );
 };
 
