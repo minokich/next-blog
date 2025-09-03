@@ -45,7 +45,7 @@ const Header = () => {
               flexGrow: 1,
               display: { xs: 'none', md: 'flex' },
               gap: '8px',
-              'justify-content': 'end',
+              justifyContent: 'end',
             }}
           >
             {links.map((link, index) => (
