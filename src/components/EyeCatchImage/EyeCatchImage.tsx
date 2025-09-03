@@ -6,12 +6,17 @@ type EyeCatchImageProps = {
   src: string;
   alt: string;
 };
+const EyeCatchWrapper = styled.div`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 100vw;
+
+  img {
+    max-width: 100%;
+  }
+`;
 
 const EyeCatchImage = ({ src, alt }: EyeCatchImageProps) => {
-  const EyeCatchWrapper = styled.div`
-    margin-top: 20px;
-    margin-bottom: 20px;
-  `;
   return (
     <EyeCatchWrapper>
       <Image src={src} alt={alt} width={800} height={400} />

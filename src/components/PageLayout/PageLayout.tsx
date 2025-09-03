@@ -7,15 +7,15 @@ type PageLayoutProps = {
   children: ReactNode;
 };
 
-const PageLayout = ({ children }: PageLayoutProps) => {
-  const PageLayout = styled.div`
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1.5rem;
-    line-height: 1.6;
-  `;
+const StyledPageLayout = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  line-height: 1.6;
+`;
 
-  return <PageLayout>{children}</PageLayout>;
+const PageLayout = ({ children }: PageLayoutProps) => {
+  return <StyledPageLayout>{children}</StyledPageLayout>;
 };
 
 export default PageLayout;
