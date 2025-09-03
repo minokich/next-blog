@@ -1,10 +1,10 @@
 import { getArticle, getArticles } from "@/lib/microcms";
-import Image from "next/image";
 
 import Article from "@/components/Article/Article";
 import PageLayout from "@/components/PageLayout/PageLayout";
 import CustomBreadcrumbs from "@/components/CustomBreadcrumbs/CustomBreadcrumbs";
 import ArticleTitle from "@/components/ArticleTitle/ArticleTitle";
+import EyeCatchImage from "@/components/EyeCatchImage/EyeCatchImage";
 
 type ArticlePageProps = {
   params: {
@@ -32,9 +32,7 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
       <CustomBreadcrumbs links={links} curreentLabel={article.title} />
       <PageLayout>
         <ArticleTitle>{article.title}</ArticleTitle>
-        {article.eyecatch && (
-          <Image src={article.eyecatch.url} alt={article.title} width={800} height={400} />
-        )}
+        {article.eyecatch && <EyeCatchImage src={article.eyecatch.url} alt={article.title} />}
         <Article content={article.content} />
       </PageLayout>
     </>
