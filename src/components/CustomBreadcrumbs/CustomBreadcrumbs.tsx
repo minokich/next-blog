@@ -6,13 +6,10 @@ type Link = { href: string; label: string };
 
 type CustomBreadcrumbsProps = {
   links: { href: string; label: string }[];
-  curreentLabel?: string;
+  currentLabel?: string;
 };
 
-const CustomBreadcrumbs = ({
-  links,
-  curreentLabel,
-}: CustomBreadcrumbsProps) => {
+const CustomBreadcrumbs = ({ links, currentLabel }: CustomBreadcrumbsProps) => {
   return (
     <Breadcrumbs aria-label="breadcrumb">
       {links.map((link: Link, index) => (
@@ -21,8 +18,8 @@ const CustomBreadcrumbs = ({
         </Link>
       ))}
 
-      {curreentLabel && (
-        <Typography sx={{ color: 'text.primary' }}>{curreentLabel}</Typography>
+      {currentLabel && (
+        <Typography sx={{ color: 'text.primary' }}>{currentLabel}</Typography>
       )}
     </Breadcrumbs>
   );

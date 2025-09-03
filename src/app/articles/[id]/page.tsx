@@ -29,7 +29,7 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
 
   return (
     <>
-      <CustomBreadcrumbs links={links} curreentLabel={article.title} />
+      <CustomBreadcrumbs links={links} currentLabel={article.title} />
       <PageLayout>
         <ArticleTitle>{article.title}</ArticleTitle>
         {article.eyecatch && (
