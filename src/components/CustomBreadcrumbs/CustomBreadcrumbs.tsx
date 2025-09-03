@@ -13,7 +13,7 @@ const CustomBreadcrumbs = ({ links, currentLabel }: CustomBreadcrumbsProps) => {
   return (
     <Breadcrumbs aria-label="breadcrumb">
       {links.map((link: Link, index) => (
-        <Link key={index} href={link.href}>
+        <Link key={index} href={link.href} underline="hover" color="inherit">
           {link.label}
         </Link>
       ))}
