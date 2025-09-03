@@ -1,10 +1,10 @@
-import { getArticle, getArticles } from "@/lib/microcms";
+import { getArticle, getArticles } from '@/lib/microcms';
 
-import Article from "@/components/Article/Article";
-import PageLayout from "@/components/PageLayout/PageLayout";
-import CustomBreadcrumbs from "@/components/CustomBreadcrumbs/CustomBreadcrumbs";
-import ArticleTitle from "@/components/ArticleTitle/ArticleTitle";
-import EyeCatchImage from "@/components/EyeCatchImage/EyeCatchImage";
+import PageLayout from '@/components/PageLayout/PageLayout';
+import CustomBreadcrumbs from '@/components/CustomBreadcrumbs/CustomBreadcrumbs';
+import ArticleTitle from '@/components/ArticleTitle/ArticleTitle';
+import EyeCatchImage from '@/components/EyeCatchImage/EyeCatchImage';
+import ArticleBody from '@/components/ArticleBody/ArticleBody';
 
 type ArticlePageProps = {
   params: {
@@ -23,8 +23,8 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
   const { id } = await params;
   const article = await getArticle(id);
   const links = [
-    { href: "/", label: "TOP" },
-    { href: "/articles", label: "記事一覧" },
+    { href: '/', label: 'TOP' },
+    { href: '/articles', label: '記事一覧' },
   ];
 
   return (
@@ -32,8 +32,10 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
       <CustomBreadcrumbs links={links} curreentLabel={article.title} />
       <PageLayout>
         <ArticleTitle>{article.title}</ArticleTitle>
-        {article.eyecatch && <EyeCatchImage src={article.eyecatch.url} alt={article.title} />}
-        <Article content={article.content} />
+        {article.eyecatch && (
+          <EyeCatchImage src={article.eyecatch.url} alt={article.title} />
+        )}
+        <ArticleBody html={article.content} />
       </PageLayout>
     </>
   );
