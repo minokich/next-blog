@@ -31,31 +31,20 @@ yarn dev
 ## ビルド・本番起動
 
 ```bash
-npm run build
-npm run start
-```
-
-## コード品質チェック
-
-```bash
-npm run lint
+yarn build
+yarn start
 ```
 
 ## Storybook（コンポーネント確認用）
 
 ```bash
-npm run storybook       # 開発用
-npm run build-storybook # ビルド
+yarn storybook       # 開発用
 ```
 
 ## ディレクトリ構成（概要）
 
-- `.storybook` ・・・ Storybook 設定
 - `public` ・・・ 静的ファイル
 - `src/app` ・・・ ページやルーティング関連
 - `src/components` ・・・ UI コンポーネント
   - `Article` / `ArticleTitle` / `CustomBreadcrumbs` / `PageLayout`
 - `lib` ・・・ API やユーティリティ関数
-- 環境・設定ファイル（`.env.local`, `.eslintrc.json`, `tsconfig.json` など）
-
-詳細なファイル一覧は必要に応じてプロジェクト内で確認できます。
