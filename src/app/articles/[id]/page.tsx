@@ -24,7 +24,7 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
   const article = await getArticle(id);
   const links = [
     { href: "/", label: "TOP" },
-    { href: "articles", label: "記事一覧" },
+    { href: "/articles", label: "記事一覧" },
   ];
 
   return (
