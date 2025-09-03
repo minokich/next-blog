@@ -59,4 +59,3 @@ npm run build-storybook # ビルド
 - 環境・設定ファイル（`.env.local`, `.eslintrc.json`, `tsconfig.json` など）
 
 詳細なファイル一覧は必要に応じてプロジェクト内で確認できます。
-

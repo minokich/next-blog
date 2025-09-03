@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { Breadcrumbs, Link, Typography } from "@mui/material";
+import { Breadcrumbs, Link, Typography } from '@mui/material';
 
 type Link = { href: string; label: string };
 
@@ -9,7 +9,10 @@ type CustomBreadcrumbsProps = {
   curreentLabel?: string;
 };
 
-const CustomBreadcrumbs = ({ links, curreentLabel }: CustomBreadcrumbsProps) => {
+const CustomBreadcrumbs = ({
+  links,
+  curreentLabel,
+}: CustomBreadcrumbsProps) => {
   return (
     <Breadcrumbs aria-label="breadcrumb">
       {links.map((link: Link, index) => (
@@ -18,7 +21,9 @@ const CustomBreadcrumbs = ({ links, curreentLabel }: CustomBreadcrumbsProps) => 
         </Link>
       ))}
 
-      {curreentLabel && <Typography sx={{ color: "text.primary" }}>{curreentLabel}</Typography>}
+      {curreentLabel && (
+        <Typography sx={{ color: 'text.primary' }}>{curreentLabel}</Typography>
+      )}
     </Breadcrumbs>
   );
 };

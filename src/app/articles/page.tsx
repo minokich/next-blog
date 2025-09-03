@@ -1,5 +1,5 @@
-import { getArticles } from "@/lib/microcms";
-import Link from "next/link";
+import { getArticles } from '@/lib/microcms';
+import Link from 'next/link';
 
 type article = {
   id: string;
