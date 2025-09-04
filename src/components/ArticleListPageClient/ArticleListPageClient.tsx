@@ -1,39 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { Link } from '@mui/material';
-import NextLink from 'next/link';
 import PaginationWithLink from '@/components/PaginationWithLink/PaginationWithLink';
+import { Article } from '@/types/article';
+import ArticleCard from '@/components//ArticleCard/ArticleCard';
+import styled from 'styled-components';
 
 const displayNum = 10;
-
-type Article = {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-  title: string;
-  content: string;
-  eyecatch?: {
-    url: string;
-    height: number;
-    width: number;
-  };
-  category: {
-    id: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    revisedAt: string;
-    name: string;
-  };
-};
 
 type Props = {
   initialArticles: Article[];
   page: number;
 };
+
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+  align-items: center;
+`;
 
 const ArticleListPageClient = ({ initialArticles, page }: Props) => {
   const [articles] = useState(initialArticles);
@@ -45,16 +30,14 @@ const ArticleListPageClient = ({ initialArticles, page }: Props) => {
 
   return (
     <div>
-      <ul>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
+        <PaginationWithLink page={page} pageCount={pageCount} />
+      </div>
+      <CardWrapper>
         {displayedItems.map((a) => (
-          <li key={a.id}>
-            <Link component={NextLink} href={`/articles/${a.id}`}>
-              {a.title}
-            </Link>
-          </li>
+          <ArticleCard article={a} key={a.id} />
         ))}
-      </ul>
-
+      </CardWrapper>
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
         <PaginationWithLink page={page} pageCount={pageCount} />
       </div>
