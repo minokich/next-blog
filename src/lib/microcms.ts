@@ -6,8 +6,24 @@ const apiClient = axios.create({
 });
 
 export const getArticles = async () => {
-  const res = await apiClient.get('/blogs');
-  return res.data.contents;
+  const allArticles = [];
+  let offset = 0;
+  const limit = 100; // 1回で取れる最大件数（microCMS仕様）
+
+  while (true) {
+    const res = await apiClient.get('/blogs', {
+      params: { offset, limit },
+    });
+
+    allArticles.push(...res.data.contents);
+
+    // 全件取得済みなら終了
+    if (allArticles.length >= res.data.totalCount) break;
+
+    offset += limit;
+  }
+
+  return allArticles;
 };
 
 export const getArticle = async (id: string) => {
