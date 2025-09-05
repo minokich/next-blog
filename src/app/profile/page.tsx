@@ -7,10 +7,20 @@ import {
   CardMedia,
   Grid,
   IconButton,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Avatar,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
 } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Image from 'next/image';
+import games from '@/data/games.json';
 
 const Profile = () => {
   return (
@@ -101,6 +111,66 @@ const Profile = () => {
           <Typography variant="h5" gutterBottom>
             趣味: ゲーム 🎮
           </Typography>
+          <Accordion
+            sx={{ mt: 1 }}
+            slotProps={{
+              transition: {
+                timeout: { enter: 550, exit: 550 },
+                easing: {
+                  enter: 'ease-in',
+                  exit: 'ease-out',
+                },
+              },
+            }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+              sx={{
+                minHeight: 64,
+                maxHeight: 64,
+                '& .MuiAccordionSummary-content': {
+                  margin: 0,
+                },
+              }}
+            >
+              <Typography component="span">
+                Steam Game List
+                <Typography component="span" fontSize={20} sx={{ ml: 0.5 }}>
+                  {games.length}
+                </Typography>
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <List>
+                {games.map((game) => (
+                  <ListItem
+                    key={game.appid}
+                    sx={{
+                      borderBottom: '1px solid #eee',
+                      py: 1.5,
+                    }}
+                  >
+                    <ListItemAvatar>
+                      <Avatar
+                        variant="rounded"
+                        src={game.icon}
+                        alt={game.name}
+                        sx={{ width: 48, height: 48 }}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={
+                        <Typography fontWeight="bold">{game.name}</Typography>
+                      }
+                      secondary={`プレイ時間: ${game.playtime_hours} 時間`}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </AccordionDetails>
+          </Accordion>
         </Box>
       </Container>
 
