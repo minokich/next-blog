@@ -19,7 +19,7 @@ const EyeCatchWrapper = styled.div`
 const EyeCatchImage = ({ src, alt }: EyeCatchImageProps) => {
   return (
     <EyeCatchWrapper>
-      <Image src={src} alt={alt} width={800} height={400} />
+      <Image src={src} alt={alt} width={900} height={400} />
     </EyeCatchWrapper>
   );
 };
