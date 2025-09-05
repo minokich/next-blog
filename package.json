@@ -9,7 +9,7 @@
     "lint": "eslint",
     "prettier": "prettier --write src",
     "storybook": "storybook dev -p 6006",
-    "prepare": "husky"
+    "prepare": "husky",
     "nippo": "node tools/nippoKun.js"
   },
   "dependencies": {
