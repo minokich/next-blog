@@ -12,15 +12,17 @@ import React from 'react';
 import PigIcon from '@/components/icons/PigIcon';
 
 const links = [
+  { href: '/about', label: 'ABOUT' },
   { href: '/articles', label: 'BLOGS' },
   { href: '/profile', label: 'PROFILE' },
-  { href: '/contact', label: 'CONTACT' },
+  { href: '/skills', label: 'SKILLS' },
+  { href: '/playground', label: 'PLAYGROUND' },
 ];
 
 const Header = () => {
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="md">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
