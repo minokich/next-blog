@@ -3,11 +3,12 @@
   --foreground: #171717;
 }
 
+/*TODO: ダークモード*/
 @media (prefers-color-scheme: dark) {
-  :root {
+  /* :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-  }
+  } */
 }
 
 html,
@@ -22,6 +23,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
 }
 
 * {
@@ -35,8 +37,9 @@ a {
   text-decoration: none;
 }
 
+/*TODO: ダークモード*/
 @media (prefers-color-scheme: dark) {
-  html {
+  /* html {
     color-scheme: dark;
-  }
+  } */
 }
