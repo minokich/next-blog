@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: 'images.microcms-assets.io',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'placehold.jp',
+        pathname: '/**',
+      },
     ],
   },
   compiler: {
