@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/nextjs-vite';
-import Slideshow from './Slideshow';
+import ExampleModal from './ExampleModal';
 
-const meta: Meta<typeof Slideshow> = {
-  component: Slideshow,
+const meta: Meta<typeof ExampleModal> = {
+  component: ExampleModal,
 };
 export default meta;
 

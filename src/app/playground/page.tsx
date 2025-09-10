@@ -1,7 +1,10 @@
 'use client';
 
-import DragDropList from '@/components/DragDropList/DragDropList';
-import Slideshow from '@/components/Slideshow/Slideshow';
+import ExampleCardFlip from '@/components/ExampleCardFlip/ExampleCardFlip';
+import ExampleDragDropList from '@/components/ExampleDragDropList/ExampleDragDropList';
+import ExampleLinearProgressWithLabel from '@/components/ExampleLinearProgressWithLabel/ExampleLinearProgressWithLabel';
+import ExampleModal from '@/components/ExampleModal/ExampleModal';
+import ExampleSlideshow from '@/components/ExampleSlideshow/ExampleSlideshow';
 import {
   Container,
   Typography,
@@ -9,6 +12,7 @@ import {
   CardContent,
   Button,
   Box,
+  CircularProgress,
 } from '@mui/material';
 import { useState } from 'react';
 
@@ -56,7 +60,7 @@ export default function PlaygroundPage() {
                   justifyContent: 'center',
                 }}
               >
-                <DragDropList itemCount={5} />
+                <ExampleDragDropList itemCount={5} />
               </Box>
             </Box>
             <Box>
@@ -72,7 +76,7 @@ export default function PlaygroundPage() {
                   justifyContent: 'center',
                 }}
               >
-                <DragDropList layout="horizontal" itemCount={6} />
+                <ExampleDragDropList layout="horizontal" itemCount={6} />
               </Box>
             </Box>
             <Box>
@@ -88,7 +92,7 @@ export default function PlaygroundPage() {
                   justifyContent: 'center',
                 }}
               >
-                <DragDropList layout="grid" itemCount={25} />
+                <ExampleDragDropList layout="grid" itemCount={25} />
               </Box>
             </Box>
           </Box>
@@ -99,25 +103,29 @@ export default function PlaygroundPage() {
         <CardContent>
           <Typography variant="h6">スライドショー</Typography>
           <Box sx={{ mt: 2 }}>
-            <Slideshow />
-          </Box>
-        </CardContent>
-      </Card>
-      {/* 
-      <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
-        <CardContent>
-          <Typography variant="h6">カードフリップ</Typography>
-          <Box sx={{ mt: 2 }}>
-            
+            <ExampleSlideshow />
           </Box>
         </CardContent>
       </Card>
 
       <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
         <CardContent>
-          <Typography variant="h6">プログレスバー & 読込中のグルグル</Typography>
+          <Typography variant="h6">カードフリップ</Typography>
           <Box sx={{ mt: 2 }}>
-            
+            <ExampleCardFlip spin={4} />
+          </Box>
+        </CardContent>
+      </Card>
+
+      <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
+        <CardContent>
+          <Typography variant="h6">
+            プログレスバー & 読込中のグルグル
+          </Typography>
+          <Box sx={{ mt: 2 }}>
+            <ExampleLinearProgressWithLabel />
+            <ExampleLinearProgressWithLabel color="secondary" />
+            <CircularProgress />
           </Box>
         </CardContent>
       </Card>
@@ -126,11 +134,11 @@ export default function PlaygroundPage() {
         <CardContent>
           <Typography variant="h6">モーダル/ダイアログ</Typography>
           <Box sx={{ mt: 2 }}>
-            
+            <ExampleModal />
           </Box>
         </CardContent>
       </Card>
-
+      {/* 
       <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
         <CardContent>
           <Typography variant="h6">Todoリスト</Typography>

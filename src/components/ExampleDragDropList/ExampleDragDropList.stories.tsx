@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/nextjs-vite';
-import DragDropList from './DragDropList';
+import ExampleDragDropList from './ExampleDragDropList';
 
-const meta: Meta<typeof DragDropList> = {
-  component: DragDropList,
+const meta: Meta<typeof ExampleDragDropList> = {
+  component: ExampleDragDropList,
   argTypes: {
     layout: {
       control: {
@@ -38,7 +38,7 @@ const meta: Meta<typeof DragDropList> = {
 };
 export default meta;
 
-export const Default: StoryObj<typeof DragDropList> = {
+export const Default: StoryObj<typeof ExampleDragDropList> = {
   args: {
     layout: 'vertical',
   },

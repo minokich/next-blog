@@ -12,15 +12,15 @@ import { CSS } from '@dnd-kit/utilities';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-type DragDropListProps = {
+type ExampleDragDropListProps = {
   layout?: 'vertical' | 'horizontal' | 'grid';
   itemCount?: number;
 };
 
-const DragDropList = ({
+const ExampleDragDropList = ({
   layout = 'vertical',
   itemCount = 10,
-}: DragDropListProps) => {
+}: ExampleDragDropListProps) => {
   const [sortedCourseList, setSortedCourseList] = useState<
     {
       id: string;
@@ -39,7 +39,7 @@ const DragDropList = ({
     }
 
     setSortedCourseList(array);
-  }, []);
+  }, [itemCount]);
 
   function handleDragEnd({ active, over }: DragEndEvent) {
     if (active && over) {
@@ -128,4 +128,4 @@ const SortableItem = ({ id, label }: { id: string; label: string }) => {
   );
 };
 
-export default DragDropList;
+export default ExampleDragDropList;

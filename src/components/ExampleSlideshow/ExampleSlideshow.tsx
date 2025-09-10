@@ -5,7 +5,7 @@ import 'swiper/css';
 
 import Image from 'next/image';
 
-const Slideshow = () => {
+const ExampleSlideshow = () => {
   return (
     <Swiper
       spaceBetween={20}
@@ -33,4 +33,4 @@ const Slideshow = () => {
   );
 };
 
-export default Slideshow;
+export default ExampleSlideshow;
