@@ -5,6 +5,7 @@ import ExampleDragDropList from '@/components/ExampleDragDropList/ExampleDragDro
 import ExampleLinearProgressWithLabel from '@/components/ExampleLinearProgressWithLabel/ExampleLinearProgressWithLabel';
 import ExampleModal from '@/components/ExampleModal/ExampleModal';
 import ExampleSlideshow from '@/components/ExampleSlideshow/ExampleSlideshow';
+import ExampleToDoList from '@/components/ExampleToDoList/ExampleToDoList';
 import {
   Container,
   Typography,
@@ -138,16 +139,16 @@ export default function PlaygroundPage() {
           </Box>
         </CardContent>
       </Card>
-      {/* 
+
       <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
         <CardContent>
           <Typography variant="h6">Todoリスト</Typography>
           <Box sx={{ mt: 2 }}>
-            
+            <ExampleToDoList />
           </Box>
         </CardContent>
       </Card>
-
+      {/* 
       <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
         <CardContent>
           <Typography variant="h6">検索フィルター付きリスト</Typography>
