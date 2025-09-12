@@ -1,5 +1,5 @@
 // pages/index.tsx
-import { Article } from '@/types/Article';
+import { ArticleType } from '@/types/Article';
 import { getLatestArticles } from '@/lib/microcms';
 import {
   Box,
@@ -16,7 +16,7 @@ const formatDate = (iso: string) => {
 };
 
 const TopPage = async () => {
-  const latestBlogs: Article[] = await getLatestArticles();
+  const latestBlogs: ArticleType[] = await getLatestArticles();
   return (
     <>
       <Box
