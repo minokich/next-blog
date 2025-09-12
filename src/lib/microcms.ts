@@ -30,3 +30,14 @@ export const getArticle = async (id: string) => {
   const res = await apiClient.get(`/blogs/${id}`);
   return res.data;
 };
+
+// TOPページ用: 最新3件だけ取得
+export const getLatestArticles = async () => {
+  const res = await apiClient.get('/blogs', {
+    params: {
+      limit: 3,
+      orders: '-publishedAt',
+    },
+  });
+  return res.data.contents;
+};
