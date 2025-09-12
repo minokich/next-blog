@@ -27,7 +27,7 @@ if (!WEBHOOK_URL) {
   process.exit(1);
 }
 
-const nippoPath = path.join(process.cwd(), 'memo', 'nippo.md');
+const nippoPath = path.join(process.cwd(), 'memo', 'nippo.txt');
 
 function getTodayString() {
   const today = new Date();
