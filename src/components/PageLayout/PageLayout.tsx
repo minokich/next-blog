@@ -8,7 +8,6 @@ type PageLayoutProps = {
 };
 
 const StyledPageLayout = styled.div`
-  max-width: 900px;
   margin: 0 auto;
   padding: 1.5rem;
   line-height: 1.6;
