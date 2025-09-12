@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         hostname: 'placehold.jp',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn2.thecatapi.com',
+        pathname: '/**',
+      },
     ],
   },
   compiler: {

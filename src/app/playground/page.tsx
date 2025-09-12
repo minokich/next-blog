@@ -1,6 +1,6 @@
 'use client';
 
-import { ExampleCatImages } from '@/components/CatImage/CatImage';
+import CatSlideshow from '@/components/CatsSlideshow/CatsSlideshow';
 import ExampleCardFlip from '@/components/ExampleCardFlip/ExampleCardFlip';
 import ExampleDragDropList from '@/components/ExampleDragDropList/ExampleDragDropList';
 import ExampleLinearProgressWithLabel from '@/components/ExampleLinearProgressWithLabel/ExampleLinearProgressWithLabel';
@@ -152,10 +152,9 @@ const PlaygroundPage = () => {
 
       <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
         <CardContent>
-          <Typography variant="h6">The Cat API(仮置き)</Typography>
-          <Box sx={{ mt: 2 }}>
-            {/* 仮置き */}
-            <ExampleCatImages />
+          <Typography variant="h6">The Cat API</Typography>
+          <Box sx={{ mt: 2, minHeight: '300px' }}>
+            <CatSlideshow />
           </Box>
         </CardContent>
       </Card>
