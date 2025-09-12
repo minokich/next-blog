@@ -1,5 +1,6 @@
 'use client';
 
+import { ExampleCatImages } from '@/components/CatImage/CatImage';
 import ExampleCardFlip from '@/components/ExampleCardFlip/ExampleCardFlip';
 import ExampleDragDropList from '@/components/ExampleDragDropList/ExampleDragDropList';
 import ExampleLinearProgressWithLabel from '@/components/ExampleLinearProgressWithLabel/ExampleLinearProgressWithLabel';
@@ -17,7 +18,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-export default function PlaygroundPage() {
+const PlaygroundPage = () => {
   const [count, setCount] = useState(0);
 
   return (
@@ -148,6 +149,16 @@ export default function PlaygroundPage() {
           </Box>
         </CardContent>
       </Card>
+
+      <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
+        <CardContent>
+          <Typography variant="h6">The Cat API(仮置き)</Typography>
+          <Box sx={{ mt: 2 }}>
+            {/* 仮置き */}
+            <ExampleCatImages />
+          </Box>
+        </CardContent>
+      </Card>
       {/* 
       <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
         <CardContent>
@@ -179,4 +190,6 @@ export default function PlaygroundPage() {
       なんか思いついたら追加 */}
     </Container>
   );
-}
+};
+
+export default PlaygroundPage;

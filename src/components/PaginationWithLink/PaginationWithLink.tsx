@@ -9,7 +9,7 @@ type Props = {
   pageCount: number;
 };
 
-export default function PaginationWithLink({ page, pageCount }: Props) {
+const PaginationWithLink = ({ page, pageCount }: Props) => {
   return (
     <Pagination
       count={pageCount}
@@ -25,4 +25,6 @@ export default function PaginationWithLink({ page, pageCount }: Props) {
       )}
     />
   );
-}
+};
+
+export default PaginationWithLink;
