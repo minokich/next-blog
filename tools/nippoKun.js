@@ -96,9 +96,9 @@ async function main() {
   const nippoText = fs.readFileSync(nippoPath, 'utf8');
   checkDate(nippoText);
 
-  console.log('==================== 日報プレビュー ====================');
+  console.log('--------------------- 日報プレビュー ---------------------');
   console.log(nippoText);
-  console.log('======================================================');
+  console.log('--------------------------------------------------------');
 
   const answer = await askConfirmation('おくって大丈夫ですか？ y/n: ');
   if (answer !== 'y') {
