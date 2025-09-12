@@ -2,14 +2,14 @@
 
 import { useState } from 'react';
 import PaginationWithLink from '@/components/PaginationWithLink/PaginationWithLink';
-import { Article } from '@/types/article';
 import ArticleCard from '@/components//ArticleCard/ArticleCard';
 import styled from 'styled-components';
+import { ArticleType } from '@/types/Article';
 
 const displayNum = 10;
 
 type Props = {
-  initialArticles: Article[];
+  initialArticles: ArticleType[];
   page: number;
 };
 
@@ -30,7 +30,7 @@ const ArticleListPageClient = ({ initialArticles, page }: Props) => {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <PaginationWithLink page={page} pageCount={pageCount} />
       </div>
       <CardWrapper>

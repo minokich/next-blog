@@ -1,11 +1,11 @@
 'use client';
 
+import { ArticleType } from '@/types/Article';
 import { Box, Typography, Card, CardMedia, CardContent } from '@mui/material';
 import NextLink from 'next/link';
-import { Article } from '@/types/article'; // 事前に型定義を分けておくと便利
 
 type Props = {
-  article: Article;
+  article: ArticleType;
 };
 
 const ArticleCard = ({ article }: Props) => {
@@ -52,9 +52,9 @@ const ArticleCard = ({ article }: Props) => {
               {article.title}
             </Typography>
 
-            {/* TODO: サブタイトル（micro CMS側で定義を追加する） */}
+            {/* TODO: Summary（micro CMS側で定義を追加する） */}
             <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-              ここにサブタイトルのダミーテキスト
+              ここにSummaryのダミーテキスト
             </Typography>
           </Box>
 
