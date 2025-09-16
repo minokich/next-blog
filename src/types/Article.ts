@@ -6,8 +6,7 @@ export type ArticleType = {
   revisedAt: string;
   title: string;
   content: string;
-  // TODO: Summary（micro CMS側で定義を追加する）
-  // summary: string;
+  summary: string;
   eyecatch?: {
     url: string;
     height: number;

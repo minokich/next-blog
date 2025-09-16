@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 }
 
 const Page = async ({ params }: { params: { page: string } }) => {
-  const pageNumber = Number(params.page);
+  const { page } = await params;
+  const pageNumber = Number(page);
   const articles = await getArticles();
 
   return <ArticleListPageClient initialArticles={articles} page={pageNumber} />;

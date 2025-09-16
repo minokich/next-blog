@@ -3,6 +3,7 @@
 import { ArticleType } from '@/types/Article';
 import { Box, Typography, Card, CardMedia, CardContent } from '@mui/material';
 import NextLink from 'next/link';
+import { format } from 'date-fns';
 
 type Props = {
   article: ArticleType;
@@ -52,9 +53,8 @@ const ArticleCard = ({ article }: Props) => {
               {article.title}
             </Typography>
 
-            {/* TODO: Summary（micro CMS側で定義を追加する） */}
             <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-              ここにSummaryのダミーテキスト
+              {article.summary}
             </Typography>
           </Box>
 
@@ -63,7 +63,7 @@ const ArticleCard = ({ article }: Props) => {
             color="text.secondary"
             sx={{ alignSelf: 'flex-end' }}
           >
-            {new Date(article.publishedAt).toLocaleDateString()}
+            {format(new Date(article.publishedAt), 'yyyy/MM/dd')}
           </Typography>
         </CardContent>
       </Card>

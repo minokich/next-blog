@@ -9,6 +9,7 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
+import { format } from 'date-fns';
 
 const formatDate = (iso: string) => {
   const d = new Date(iso);
@@ -64,12 +65,9 @@ const TopPage = async () => {
                       {blog.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {formatDate(blog.createdAt)}
+                      {format(new Date(blog.createdAt), 'yyyy/MM/dd')}
                     </Typography>
-                    <Typography variant="body1">
-                      {/* TODO: Summary（micro CMS側で定義を追加する） */}
-                      ダミーサマリー 要micro cms修正
-                    </Typography>
+                    <Typography variant="body1">{blog.summary}</Typography>
                   </CardContent>
                 </CardActionArea>
               </Card>
