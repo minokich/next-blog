@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: yarn dev
+    mem_limit: 1g
+
+  storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '6006:6006'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: yarn storybook --no-open
+    mem_limit: 1g
