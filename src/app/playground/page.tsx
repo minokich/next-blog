@@ -7,6 +7,7 @@ import ExampleLinearProgressWithLabel from '@/components/ExampleLinearProgressWi
 import ExampleModal from '@/components/ExampleModal/ExampleModal';
 import ExampleSlideshow from '@/components/ExampleSlideshow/ExampleSlideshow';
 import ExampleToDoList from '@/components/ExampleToDoList/ExampleToDoList';
+import ExampleWeather from '@/components/ExampleWeather/ExampleWeather';
 import {
   Container,
   Typography,
@@ -158,16 +159,17 @@ const PlaygroundPage = () => {
           </Box>
         </CardContent>
       </Card>
-      {/* 
+
       <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
         <CardContent>
-          <Typography variant="h6">検索フィルター付きリスト</Typography>
+          <Typography variant="h6">天気予報API(気象庁)</Typography>
           <Box sx={{ mt: 2 }}>
-            
+            <ExampleWeather />
           </Box>
         </CardContent>
       </Card>
 
+      {/* 
       <Card sx={{ borderRadius: 3, boxShadow: 3, mt: 3 }}>
         <CardContent>
           
