@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import PigIcon from '@/components/icons/PigIcon';
+import { useGetMeQuery } from '@/generated/graphql';
 
 const links = [
   { href: '/about', label: 'ABOUT' },
@@ -20,6 +21,7 @@ const links = [
 ];
 
 const Header = () => {
+  const { data, loading, error } = useGetMeQuery();
   return (
     <AppBar position="static">
       <Container maxWidth="md">
@@ -63,6 +65,29 @@ const Header = () => {
               </Button>
             ))}
           </Box>
+          {loading && <></>}
+
+          {!loading && !error && data?.me ? (
+            <Button
+              variant="text"
+              href={'/apollo/profile'}
+              color="info"
+              size="large"
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              {data.me.name}
+            </Button>
+          ) : (
+            <Button
+              variant="text"
+              href={'/apollo'}
+              color="info"
+              size="large"
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              LOGIN
+            </Button>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

@@ -4,6 +4,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import type { ReactNode } from 'react';
 import './globals.css';
 import { Box, Container } from '@mui/material';
+import Providers from './providers';
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,27 +14,29 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <html lang="ja">
       <body>
-        <AppRouterCacheProvider>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: '100vh',
-            }}
-          >
-            <Header />
-            <Container
-              maxWidth="lg"
+        <Providers>
+          <AppRouterCacheProvider>
+            <Box
               sx={{
-                flex: 1,
-                py: 4,
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: '100vh',
               }}
             >
-              {children}
-            </Container>
-            <Footer />
-          </Box>
-        </AppRouterCacheProvider>
+              <Header />
+              <Container
+                maxWidth="lg"
+                sx={{
+                  flex: 1,
+                  py: 4,
+                }}
+              >
+                {children}
+              </Container>
+              <Footer />
+            </Box>
+          </AppRouterCacheProvider>
+        </Providers>
       </body>
     </html>
   );
