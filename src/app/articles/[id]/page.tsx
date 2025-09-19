@@ -12,12 +12,12 @@ type ArticlePageProps = {
   };
 };
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const articles = await getArticles();
   return articles.map((article: { id: string }) => ({
     id: article.id,
   }));
-}
+};
 
 const ArticlePage = async ({ params }: ArticlePageProps) => {
   const { id } = await params;

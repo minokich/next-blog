@@ -3,5 +3,6 @@ query GetMe {
     id
     name
     email
+    role
   }
 }

@@ -24,6 +24,7 @@ const typeDefs = gql`
     id: ID!
     email: String!
     name: String!
+    role: String!
   }
 
   type AuthPayload {
@@ -70,6 +71,7 @@ const resolvers = {
     },
     signup: (_, { input }) => {
       const { email, password, name } = input;
+      const role = 'USER';
       const existingUser = users.find((user) => user.email === email);
 
       if (existingUser) {
@@ -81,6 +83,7 @@ const resolvers = {
         email,
         password,
         name,
+        role,
       };
 
       users.push(newUser);

@@ -70,6 +70,7 @@ export type User = {
   email: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
+  role: Scalars['String']['output'];
 };
 
 export type LoginMutationVariables = Exact<{
@@ -97,7 +98,13 @@ export type GetMeQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetMeQuery = {
   __typename?: 'Query';
-  me?: { __typename?: 'User'; id: string; name: string; email: string } | null;
+  me?: {
+    __typename?: 'User';
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+  } | null;
 };
 
 export const LoginDocument = gql`
@@ -164,6 +171,7 @@ export const GetMeDocument = gql`
       id
       name
       email
+      role
     }
   }
 `;

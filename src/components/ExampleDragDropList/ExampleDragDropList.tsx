@@ -41,7 +41,7 @@ const ExampleDragDropList = ({
     setSortedCourseList(array);
   }, [itemCount]);
 
-  function handleDragEnd({ active, over }: DragEndEvent) {
+  const handleDragEnd = ({ active, over }: DragEndEvent) => {
     if (active && over) {
       const oldIndex = sortedCourseList.findIndex(
         (item) => item.id === active.id,
@@ -53,7 +53,7 @@ const ExampleDragDropList = ({
 
       setSortedCourseList(arrayMove(newItems, oldIndex, newIndex));
     }
-  }
+  };
 
   // 並びの向き
   const strategy =

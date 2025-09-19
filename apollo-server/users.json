@@ -3,12 +3,14 @@
     "id": "1",
     "email": "hogehoge@example.com",
     "password": "password",
-    "name": "たかし"
+    "name": "たかし",
+    "role": "ADMIN"
   },
   {
     "id": "2",
     "email": "hogehoge@gmail.com",
     "password": "hogehoge",
-    "name": "minoki"
+    "name": "minoki",
+    "role": "USER"
   }
 ]

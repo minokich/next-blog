@@ -28,6 +28,9 @@ const ProfilePage = () => {
         <Typography sx={{ mt: 2 }}>ID: {data.me.id}</Typography>
         <Typography>名前: {data.me.name}</Typography>
         <Typography>Email: {data.me.email}</Typography>
+        {data.me.role === 'ADMIN' && (
+          <Button href="/apollo/admin">管理者ページ</Button>
+        )}
       </Box>
       <Button
         variant="outlined"
