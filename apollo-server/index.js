@@ -53,8 +53,8 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    me: (_, __, { user }) => {
-      if (!user) throw new Error('Not authenticated');
+    me: (_, __, { requireUser }) => {
+      const user = requireUser();
       return users.find((u) => u.id === user.id);
     },
   },
@@ -110,7 +110,14 @@ const server = new ApolloServer({
     const auth = req.headers.authorization || '';
     const token = auth.replace('Bearer ', '');
     const user = getUserFromToken(token);
-    return { user };
+
+    return {
+      user, // null の場合あり
+      requireUser: () => {
+        if (!user) throw new Error('Not authenticated');
+        return user;
+      },
+    };
   },
 });
 
