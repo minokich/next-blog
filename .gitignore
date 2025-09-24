@@ -10,6 +10,7 @@
 !.yarn/releases
 !.yarn/versions
 apollo-server/node_modules
+apollo-server/dist
 
 # testing
 /coverage
