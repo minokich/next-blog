@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1",
+    "userId": "1",
+    "message": "ようこそ！新しいアカウントが作成されました。",
+    "read": false,
+    "createdAt": "2025-09-01T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "userId": "1",
+    "message": "あなたのプロフィールが更新されました。",
+    "read": true,
+    "createdAt": "2025-09-05T14:30:00Z"
+  },
+  {
+    "id": "3",
+    "userId": "1",
+    "message": "新しいメッセージがあります。",
+    "read": false,
+    "createdAt": "2025-09-10T08:15:00Z"
+  },
+  {
+    "id": "4",
+    "userId": "1",
+    "message": "セキュリティチェックが完了しました。",
+    "read": true,
+    "createdAt": "2025-09-12T19:45:00Z"
+  },
+  {
+    "id": "5",
+    "userId": "2",
+    "message": "ログインが成功しました。",
+    "read": false,
+    "createdAt": "2025-09-02T09:20:00Z"
+  },
+  {
+    "id": "6",
+    "userId": "2",
+    "message": "新しい友達リクエストがあります。",
+    "read": false,
+    "createdAt": "2025-09-06T16:50:00Z"
+  },
+  {
+    "id": "7",
+    "userId": "2",
+    "message": "パスワードが変更されました。",
+    "read": true,
+    "createdAt": "2025-09-09T11:05:00Z"
+  },
+  {
+    "id": "8",
+    "userId": "2",
+    "message": "本日のおすすめ記事をチェックしてください。",
+    "read": false,
+    "createdAt": "2025-09-11T21:00:00Z"
+  }
+]

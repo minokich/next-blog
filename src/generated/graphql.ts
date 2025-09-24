@@ -30,6 +30,12 @@ export type Scalars = {
   Float: { input: number; output: number };
 };
 
+export type AdminData = {
+  __typename?: 'AdminData';
+  secretStats: Scalars['String']['output'];
+  systemLogs: Array<Scalars['String']['output']>;
+};
+
 export type AuthPayload = {
   __typename?: 'AuthPayload';
   token: Scalars['String']['output'];
@@ -43,6 +49,7 @@ export type LoginInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   login?: Maybe<AuthPayload>;
+  markNotificationAsRead: Notification;
   signup?: Maybe<AuthPayload>;
 };
 
@@ -50,13 +57,27 @@ export type MutationLoginArgs = {
   input: LoginInput;
 };
 
+export type MutationMarkNotificationAsReadArgs = {
+  id: Scalars['ID']['input'];
+};
+
 export type MutationSignupArgs = {
   input: SignupInput;
 };
 
+export type Notification = {
+  __typename?: 'Notification';
+  createdAt: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  message: Scalars['String']['output'];
+  read: Scalars['Boolean']['output'];
+};
+
 export type Query = {
   __typename?: 'Query';
+  adminData: AdminData;
   me?: Maybe<User>;
+  myNotifications: Array<Notification>;
 };
 
 export type SignupInput = {
@@ -83,6 +104,21 @@ export type LoginMutation = {
   login?: { __typename?: 'AuthPayload'; token: string } | null;
 };
 
+export type MarkNotificationAsReadMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+export type MarkNotificationAsReadMutation = {
+  __typename?: 'Mutation';
+  markNotificationAsRead: {
+    __typename?: 'Notification';
+    id: string;
+    message: string;
+    read: boolean;
+    createdAt: string;
+  };
+};
+
 export type SignupMutationVariables = Exact<{
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -92,6 +128,17 @@ export type SignupMutationVariables = Exact<{
 export type SignupMutation = {
   __typename?: 'Mutation';
   signup?: { __typename?: 'AuthPayload'; token: string } | null;
+};
+
+export type AdminDataQueryVariables = Exact<{ [key: string]: never }>;
+
+export type AdminDataQuery = {
+  __typename?: 'Query';
+  adminData: {
+    __typename?: 'AdminData';
+    systemLogs: Array<string>;
+    secretStats: string;
+  };
 };
 
 export type GetMeQueryVariables = Exact<{ [key: string]: never }>;
@@ -105,6 +152,19 @@ export type GetMeQuery = {
     email: string;
     role: string;
   } | null;
+};
+
+export type MyNotificationsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type MyNotificationsQuery = {
+  __typename?: 'Query';
+  myNotifications: Array<{
+    __typename?: 'Notification';
+    id: string;
+    message: string;
+    read: boolean;
+    createdAt: string;
+  }>;
 };
 
 export const LoginDocument = gql`
@@ -136,6 +196,41 @@ export type LoginMutationOptions = Apollo.BaseMutationOptions<
   LoginMutation,
   LoginMutationVariables
 >;
+export const MarkNotificationAsReadDocument = gql`
+  mutation MarkNotificationAsRead($id: ID!) {
+    markNotificationAsRead(id: $id) {
+      id
+      message
+      read
+      createdAt
+    }
+  }
+`;
+export type MarkNotificationAsReadMutationFn = Apollo.MutationFunction<
+  MarkNotificationAsReadMutation,
+  MarkNotificationAsReadMutationVariables
+>;
+export function useMarkNotificationAsReadMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    MarkNotificationAsReadMutation,
+    MarkNotificationAsReadMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    MarkNotificationAsReadMutation,
+    MarkNotificationAsReadMutationVariables
+  >(MarkNotificationAsReadDocument, options);
+}
+export type MarkNotificationAsReadMutationHookResult = ReturnType<
+  typeof useMarkNotificationAsReadMutation
+>;
+export type MarkNotificationAsReadMutationResult =
+  Apollo.MutationResult<MarkNotificationAsReadMutation>;
+export type MarkNotificationAsReadMutationOptions = Apollo.BaseMutationOptions<
+  MarkNotificationAsReadMutation,
+  MarkNotificationAsReadMutationVariables
+>;
 export const SignupDocument = gql`
   mutation Signup($email: String!, $password: String!, $name: String!) {
     signup(input: { email: $email, password: $password, name: $name }) {
@@ -164,6 +259,63 @@ export type SignupMutationResult = Apollo.MutationResult<SignupMutation>;
 export type SignupMutationOptions = Apollo.BaseMutationOptions<
   SignupMutation,
   SignupMutationVariables
+>;
+export const AdminDataDocument = gql`
+  query AdminData {
+    adminData {
+      systemLogs
+      secretStats
+    }
+  }
+`;
+export function useAdminDataQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    AdminDataQuery,
+    AdminDataQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AdminDataQuery, AdminDataQueryVariables>(
+    AdminDataDocument,
+    options,
+  );
+}
+export function useAdminDataLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    AdminDataQuery,
+    AdminDataQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AdminDataQuery, AdminDataQueryVariables>(
+    AdminDataDocument,
+    options,
+  );
+}
+export function useAdminDataSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<AdminDataQuery, AdminDataQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<AdminDataQuery, AdminDataQueryVariables>(
+    AdminDataDocument,
+    options,
+  );
+}
+export type AdminDataQueryHookResult = ReturnType<typeof useAdminDataQuery>;
+export type AdminDataLazyQueryHookResult = ReturnType<
+  typeof useAdminDataLazyQuery
+>;
+export type AdminDataSuspenseQueryHookResult = ReturnType<
+  typeof useAdminDataSuspenseQuery
+>;
+export type AdminDataQueryResult = Apollo.QueryResult<
+  AdminDataQuery,
+  AdminDataQueryVariables
 >;
 export const GetMeDocument = gql`
   query GetMe {
@@ -215,4 +367,68 @@ export type GetMeSuspenseQueryHookResult = ReturnType<
 export type GetMeQueryResult = Apollo.QueryResult<
   GetMeQuery,
   GetMeQueryVariables
+>;
+export const MyNotificationsDocument = gql`
+  query MyNotifications {
+    myNotifications {
+      id
+      message
+      read
+      createdAt
+    }
+  }
+`;
+export function useMyNotificationsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    MyNotificationsQuery,
+    MyNotificationsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<MyNotificationsQuery, MyNotificationsQueryVariables>(
+    MyNotificationsDocument,
+    options,
+  );
+}
+export function useMyNotificationsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    MyNotificationsQuery,
+    MyNotificationsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    MyNotificationsQuery,
+    MyNotificationsQueryVariables
+  >(MyNotificationsDocument, options);
+}
+export function useMyNotificationsSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        MyNotificationsQuery,
+        MyNotificationsQueryVariables
+      >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    MyNotificationsQuery,
+    MyNotificationsQueryVariables
+  >(MyNotificationsDocument, options);
+}
+export type MyNotificationsQueryHookResult = ReturnType<
+  typeof useMyNotificationsQuery
+>;
+export type MyNotificationsLazyQueryHookResult = ReturnType<
+  typeof useMyNotificationsLazyQuery
+>;
+export type MyNotificationsSuspenseQueryHookResult = ReturnType<
+  typeof useMyNotificationsSuspenseQuery
+>;
+export type MyNotificationsQueryResult = Apollo.QueryResult<
+  MyNotificationsQuery,
+  MyNotificationsQueryVariables
 >;

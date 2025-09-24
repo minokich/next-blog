@@ -1,11 +1,27 @@
 'use client';
 
-import { useGetMeQuery } from '@/generated/graphql';
-import { Alert, Box, Button, Typography } from '@mui/material';
+import { useGetMeQuery, useMyNotificationsQuery } from '@/generated/graphql';
+import {
+  Alert,
+  Box,
+  Button,
+  CircularProgress,
+  List,
+  ListItem,
+  Typography,
+} from '@mui/material';
+import { format } from 'date-fns';
 import { useRouter } from 'next/navigation';
 
 const ProfilePage = () => {
-  const { data, loading, error } = useGetMeQuery();
+  const { data: meData, loading: meLoading, error: meError } = useGetMeQuery();
+  const {
+    data: notificationData,
+    loading: notificationLoading,
+    error: notificationError,
+  } = useMyNotificationsQuery({
+    skip: !meData?.me,
+  });
   const router = useRouter();
 
   const handleLogout = () => {
@@ -13,24 +29,40 @@ const ProfilePage = () => {
     router.push('/apollo');
   };
 
-  if (loading) return <Typography>読み込み中…</Typography>;
+  if (meLoading) return <CircularProgress />;
 
-  if (error)
+  if (meError)
     return (
       <Alert severity="error">非ログインユーザーはアクセスできません</Alert>
     );
-  if (!data?.me)
+  if (!meData?.me)
     return <Alert severity="error">ユーザー情報が取得できませんでした</Alert>;
   return (
     <Box sx={{ mt: 4, maxWidth: 900, mx: 'auto' }}>
       <Box>
         <Typography variant="h4">プロフィール</Typography>
-        <Typography sx={{ mt: 2 }}>ID: {data.me.id}</Typography>
-        <Typography>名前: {data.me.name}</Typography>
-        <Typography>Email: {data.me.email}</Typography>
-        {data.me.role === 'ADMIN' && (
+        <Typography sx={{ mt: 2 }}>ID: {meData.me.id}</Typography>
+        <Typography>名前: {meData.me.name}</Typography>
+        <Typography>Email: {meData.me.email}</Typography>
+        {meData.me.role === 'ADMIN' && (
           <Button href="/apollo/admin">管理者ページ</Button>
         )}
+      </Box>
+      <Box>
+        <List>
+          {notificationLoading && <CircularProgress />}
+          {notificationLoading && (
+            <Alert severity="error">おしらせ情報が取得できませんでした</Alert>
+          )}
+          {!notificationLoading &&
+            !notificationError &&
+            notificationData?.myNotifications.map((n) => (
+              <ListItem key={n.id}>
+                {format(new Date(n.createdAt), 'yyyy/MM/dd')}
+                {n.message}
+              </ListItem>
+            ))}
+        </List>
       </Box>
       <Button
         variant="outlined"

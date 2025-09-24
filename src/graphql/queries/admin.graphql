@@ -1,0 +1,6 @@
+query AdminData {
+  adminData {
+    systemLogs
+    secretStats
+  }
+}

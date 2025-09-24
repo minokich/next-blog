@@ -1,0 +1,8 @@
+query MyNotifications {
+  myNotifications {
+    id
+    message
+    read
+    createdAt
+  }
+}
