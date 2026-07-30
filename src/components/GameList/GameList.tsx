@@ -68,58 +68,54 @@ const GameList = ({ games }: GameListProps) => {
 
       <AccordionDetails>
         <Box
-  sx={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: 1,
-  }}
->
-  {games.slice(0, showCount).map((game) => (
-    <Box
-      key={game.appid}
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        p: 1,
-        border: '1px solid #eee',
-        borderRadius: 1,
-      }}
-    >
-      <Avatar
-        variant="rounded"
-        src={game.icon}
-        alt={game.name}
-        sx={{
-          width: 40,
-          height: 40,
-          mr: 1,
-        }}
-      />
-
-      <Box
-        sx={{
-          flex: 1,
-          minWidth: 0,
-        }}
-      >
-        <Typography
-          noWrap
-          fontWeight="bold"
-          fontSize={14}
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+            gap: 1,
+          }}
         >
-          {game.name}
-        </Typography>
-      
-        <Typography
-          variant="caption"
-          color="text.secondary"
-        >
-          {game.playtime_hours} 時間
-        </Typography>
-      </Box>
-    </Box>
-  ))}
-</Box>
+          {games.slice(0, showCount).map((game) => (
+            <Box
+              key={game.appid}
+              sx={{
+                width: '100%',
+                minWidth: 0,
+                display: 'flex',
+                alignItems: 'center',
+                p: 1,
+                border: '1px solid #eee',
+                borderRadius: 1,
+                overflow: 'hidden',
+              }}
+            >
+              <Avatar
+                src={game.icon}
+                variant="rounded"
+                sx={{
+                  width: 40,
+                  height: 40,
+                  mr: 1,
+                  flexShrink: 0,
+                }}
+              />
+          
+              <Box
+                sx={{
+                  flex: 1,
+                  minWidth: 0,
+                }}
+              >
+                <Typography noWrap fontWeight="bold">
+                  {game.name}
+                </Typography>
+          
+                <Typography variant="caption">
+                  {game.playtime_hours} 時間
+                </Typography>
+              </Box>
+            </Box>
+          ))}
+          </Box>
 
         {showCount < games.length && (
           <Box textAlign="center" sx={{ mt: 2 }}>
