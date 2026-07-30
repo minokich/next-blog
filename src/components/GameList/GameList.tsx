@@ -28,7 +28,7 @@ type GameListProps = {
 };
 
 const GameList = ({ games }: GameListProps) => {
-  const [showCount, setShowCount] = useState(10);
+  const [showCount, setShowCount] = useState(50);
 
   const handleShowMore = () => {
     setShowCount((prev) => prev + 10);
@@ -71,30 +71,54 @@ const GameList = ({ games }: GameListProps) => {
       </AccordionSummary>
 
       <AccordionDetails>
-        <List>
-          {games.slice(0, showCount).map((game) => (
-            <ListItem
-              key={game.appid}
-              sx={{
-                borderBottom: '1px solid #eee',
-                py: 1.5,
-              }}
-            >
-              <ListItemAvatar>
-                <Avatar
-                  variant="rounded"
-                  src={game.icon}
-                  alt={game.name}
-                  sx={{ width: 48, height: 48 }}
-                />
-              </ListItemAvatar>
-              <ListItemText
-                primary={<Typography fontWeight="bold">{game.name}</Typography>}
-                secondary={`プレイ時間: ${game.playtime_hours} 時間`}
-              />
-            </ListItem>
-          ))}
-        </List>
+        <Box
+  sx={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    gap: 1,
+  }}
+>
+  {games.slice(0, showCount).map((game) => (
+    <Box
+      key={game.appid}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        p: 1,
+        border: '1px solid #eee',
+        borderRadius: 1,
+      }}
+    >
+      <Avatar
+        variant="rounded"
+        src={game.icon}
+        alt={game.name}
+        sx={{
+          width: 40,
+          height: 40,
+          mr: 1,
+        }}
+      />
+
+      <Box sx={{ minWidth: 0 }}>
+        <Typography
+          fontWeight="bold"
+          fontSize={14}
+          noWrap
+        >
+          {game.name}
+        </Typography>
+
+        <Typography
+          variant="caption"
+          color="text.secondary"
+        >
+          {game.playtime_hours} 時間
+        </Typography>
+      </Box>
+    </Box>
+  ))}
+</Box>
 
         {showCount < games.length && (
           <Box textAlign="center" sx={{ mt: 2 }}>
