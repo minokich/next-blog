@@ -5,11 +5,7 @@ import {
   AccordionSummary,
   Typography,
   AccordionDetails,
-  List,
-  ListItem,
-  ListItemAvatar,
   Avatar,
-  ListItemText,
   Box,
   Button,
 } from '@mui/material';
