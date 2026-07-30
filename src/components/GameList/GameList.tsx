@@ -27,7 +27,7 @@ const GameList = ({ games }: GameListProps) => {
   const [showCount, setShowCount] = useState(50);
 
   const handleShowMore = () => {
-    setShowCount((prev) => prev + 10);
+    setShowCount((prev) => prev + 50);
   };
 
   return (
@@ -70,7 +70,7 @@ const GameList = ({ games }: GameListProps) => {
         <Box
   sx={{
     display: 'grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridTemplateColumns: 'repeat(3, 1fr)',
     gap: 1,
   }}
 >
@@ -96,15 +96,20 @@ const GameList = ({ games }: GameListProps) => {
         }}
       />
 
-      <Box sx={{ minWidth: 0 }}>
+      <<Box
+        sx={{
+          flex: 1,
+          minWidth: 0,
+        }}
+      >
         <Typography
+          noWrap
           fontWeight="bold"
           fontSize={14}
-          noWrap
         >
           {game.name}
         </Typography>
-
+      
         <Typography
           variant="caption"
           color="text.secondary"
